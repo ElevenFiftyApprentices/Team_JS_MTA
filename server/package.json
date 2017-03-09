@@ -12,13 +12,21 @@
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
+<<<<<<< HEAD
     "jwt-simple": "^0.5.1",
+=======
+    "jwt-simple": "0.5.1",
+>>>>>>> 80c209907a37fb0cd14a61b982a0eab40c77de77
     "mongoose": "^4.8.6",
     "passport": "^0.3.2",
     "passport-jwt": "^2.2.1",
     "passport-local": "^1.0.0"
   },
+<<<<<<< HEAD
   "devDependencies": {
+=======
+  "devDependencies":{
+>>>>>>> 80c209907a37fb0cd14a61b982a0eab40c77de77
     "nodemon": "^1.11.0"
   }
 }
