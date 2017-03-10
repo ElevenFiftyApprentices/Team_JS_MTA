@@ -2,12 +2,12 @@
   "name": "client",
   "version": "1.0.0",
   "description": "",
-  "main": "webpack.config.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js"
   },
-  "author": "",
+  "author": "Matt",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.2.1",
@@ -18,12 +18,17 @@
     "webpack-dev-server": "^1.14.0"
   },
   "dependencies": {
+    "axios": "^0.15.3",
     "babel-preset-stage-1": "^6.1.18",
+    "lodash": "^4.17.4",
     "react": "^0.14.3",
+    "react-bootstrap": "^0.30.7",
     "react-dom": "^0.14.3",
     "react-redux": "^4.0.0",
     "react-router": "^2.0.1",
     "redux": "^3.0.4",
-    "redux-form": "^5.0.1"
+    "redux-form": "^5.3.4",
+    "redux-thunk": "^2.2.0",
+    "youtube-api-search": "0.0.5"
   }
 }
