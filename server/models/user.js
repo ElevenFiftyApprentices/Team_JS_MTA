@@ -1,4 +1,4 @@
-var mongoose = mongoose.Schema;
+var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var userSchema = new Schema({
 	email: {
@@ -9,4 +9,4 @@ var userSchema = new Schema({
 	password: String
 });
 var model = mongoose.model('user', userSchema);
-module.export = model;
+module.exports = model;
