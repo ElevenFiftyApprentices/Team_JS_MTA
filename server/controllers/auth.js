@@ -1,3 +1,3 @@
-exports.signup = function(req, res, next){
-	// res.send("authorization");
-}
+// exports.signup = function(req, res, next){
+// 	// res.send("authorization");
+// }
