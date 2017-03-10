@@ -1,41 +1,51 @@
-import React, { Component, ProTypes } from 'react';
-import { reduxForm } from 'redux-form';
-// import { createPost } from '../../actions/index'
-import { link } from 'react-router';
 
+import React, { Component } from 'react';
+import { reduxForm } from 'redux-form';
+import { createPost } from '../../actions/index';
+import { Link } from 'react-router';
+ 
 class ListItem extends Component {
 	handleFormSubmit(formProps) {
-		this.props.createPost(formProps);
+		this.props.createPost(formProps)
+
+		console.log(formProps);
+		//need to do something to log user in
 	}
-	render() {
-		const { fields: { name, quantity, note }, handleSubmit }=this.props;
+	render(){
+		const { fields: { title, category, url, ingredients, directions }, handleSubmit }=this.props;
 		return(
 			<form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-				<h3>Add New Item</h3>
-
+				<h3>Create a New Post</h3>
 				<fieldset className="form-group">
-					<label>Name</label>
-					<input type="text" className="form-control" {...name} />
+					<label>Title:</label>
+					<input type="text" {...title} className="form-control" />
 				</fieldset>
-
 				<fieldset className="form-group">
-					<label>Quantity</label>
-					<input type="text" className="form-control" {...quantity} />
+					<label>Category:</label>
+					<input type="text" {...category} className="form-control" />
 				</fieldset>
-
 				<fieldset className="form-group">
-					<label>Note</label>
-					<input type="text" className="form-control" {...note} />
+					<label>URL:</label>
+					<input type="text" {...url} className="form-control" />
 				</fieldset>
-
-				<button type="submit" className="btn btn-primary">Submit</button>
-				<button className="btn btn-danger">Cancel</button>
+				<fieldset className="form-group">
+					<label>Ingredients:</label>
+					<input type="text" {...ingredients} className="form-control text" rows="6"/>
+				</fieldset>
+				<fieldset className="form-group">
+					<label>Directions:</label>
+					<input type="text" {...directions} className="form-control text" rows="6"/>
+				</fieldset>
+				<button action="submit" className="btn btn-primary">Submit</button>
+				<Link to='/' className='btn btn-danger'>Cancel</Link>
 			</form>
-			);
+		);
+
+
 	}
 }
 
 export default reduxForm({
-	form: 'PostNewForm',
-	fields: ['name', 'quantity', 'note']
+	form: 'PostsNewForm',
+	fields: ['title', 'category', 'url', 'ingredients', 'directions']
 }, null, { createPost })(ListItem);

@@ -1,7 +1,12 @@
 import { combineReducers } from 'redux';
+import { reducer as formReducer } from 'redux-form';
+import authReducer from './auth_reducer';
+import PostsReducer from './reducer_posts';
 
 	const rootReducer = combineReducers({
-		state: (state = {}) => state
+		form: formReducer,
+		auth: authReducer,
+		posts: PostsReducer
 	});
 
 	export default rootReducer;
