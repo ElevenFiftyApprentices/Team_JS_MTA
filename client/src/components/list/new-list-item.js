@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
 import { createPost } from '../../actions/index';
@@ -39,6 +40,8 @@ class ListItem extends Component {
 				<Link to='/' className='btn btn-danger'>Cancel</Link>
 			</form>
 		);
+
+
 	}
 }
 
