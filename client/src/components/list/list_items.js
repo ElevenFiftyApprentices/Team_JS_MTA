@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPosts, deletePost } from '../../actions/index';
+import { fetchPosts } from '../../actions/index';
 import { Link } from 'react-router';
 import axios from 'axios';
 
@@ -24,12 +24,6 @@ class ListItems extends Component {
 				posts: [ ...posts ]
 			})
 		})
-	}
-
-	onDeleteClick(item){
-		//todo add the delete here 
-		console.log("Test", item);
-		this.props.deletePost(item._id);
 	}
 
 	renderItems(){
@@ -78,4 +72,4 @@ function mapStateToProps(state){
 	return { posts: state.posts.all };
 }
 
-export default connect (mapStateToProps, { fetchPosts, deletePost })(ListItems);
+export default connect (mapStateToProps, { fetchPosts: fetchPosts })(ListItems);
