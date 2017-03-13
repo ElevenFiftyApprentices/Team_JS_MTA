@@ -21,7 +21,7 @@ import ListShow from './components/list/list_show';
 import reducers from './reducers';
 import { AUTH_USER } from './actions/types';
 
-const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
+// const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 // const store = createStoreWithMiddleware(reducers);
 
 // const token = localStorage.getItem('token');

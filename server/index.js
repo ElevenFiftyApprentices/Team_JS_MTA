@@ -11,7 +11,7 @@ var app = express();
 var router = require('./router');
 
 //DB connection
-mongoose.connect("mongodb://localhost:shoppinglist/shoppinglist")
+mongoose.connect("mongodb://localhost:shoppinglist/shoppinglist");
 
 
 //MIDDLEWARE

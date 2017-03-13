@@ -30,8 +30,8 @@ class ListItems extends Component {
 			return(
 				<li className="list-group-item" key={post._id}>
 					<Link to={"items/" + post._id}>
-						<span className="pull-xs-left">{post.category}</span>
-						<span className="pull-xs-right"><strong>{post.title}</strong></span>
+						<span className="pull-xs-left"><strong>{post.title + " -"}</strong></span>
+						<span className="pull-xs-right">{post.category + ", " + post.color}</span>
 					</Link>
 				</li>
 			);
