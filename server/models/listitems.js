@@ -24,4 +24,4 @@ var ItemsSchema = new Schema({
 	}
 });
 
-module.exports = mongoose.model('listItem', ItemsSchema);
+module.exports = mongoose.model('listitem', ItemsSchema);
