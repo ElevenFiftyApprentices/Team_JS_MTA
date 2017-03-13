@@ -7,9 +7,9 @@ module.exports = {
     publicPath: '/',
     filename: 'bundle.js'
   },
-  module:{
+  module: {
     loaders: [{
-      exclude: '/node/modules',
+      exclude: /node_modules/,
       loader: 'babel',
       query: {
         presets: ['react', 'es2015', 'stage-1']
