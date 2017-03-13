@@ -28,6 +28,7 @@ class ListShow extends Component {
 			})
 		});
 	}
+	
 
 	onDeleteClick(){
 		this.props.deletePost(this.props.params.id);

@@ -6,22 +6,39 @@ var CookbookSchema = new Schema({
 		type: String,
 		default: ''
 	},
-	category: {
+	color: {
 		type: String,
 		default: ''
 	},
-	url: {
-		type: String,
-		default: ''
-	},
-	ingredients: {
-		type: String,
-		default: ''
-	},
-	directions: {
-		type: String,
-		default: ''
-	},
+	items: [
+		{
+		contents: {
+			type: String,
+			default: ''
+		},
+		shoppingListId: {
+			type: Number,
+			default: 0
+		},
+		priority: {
+			type: Number,
+			default: 1
+		},
+		isChecked: {
+			type: Boolean,
+			default: false
+		},
+		specificUser: {
+			type: String,
+			default: ''
+		},
+		notes: {
+			type: String,
+			default: ''
+		}
+	}
+],
+
 	specificUser: {
 		type: String,
 		default: ''
