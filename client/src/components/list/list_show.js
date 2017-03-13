@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link, browserHistory } from 'react-router';
-import { fetchPost, deletePost } from '../../actions/index';
+import { fetchPosts } from '../../actions/index';
 import axios from 'axios';
 
 const ROOT_URL = 'http://localhost:3000';
@@ -28,10 +28,6 @@ class ListShow extends Component {
 			})
 		});
 	}
-	onDeleteClick(){
-		//todo add the delete here 
-		this.props.deletePost(this.props.params.id);
-	}
 
 	render(){
 		const post = this.state.post;
@@ -46,6 +42,7 @@ class ListShow extends Component {
 
 		return(
 			<div>
+				<input type="checkbox"></input>
 				<h3>{post.title}</h3>
 				<div id="space"></div>
 				<h6>Course: {post.category}</h6>
@@ -56,11 +53,6 @@ class ListShow extends Component {
 				<h6>Directions:</h6>
 				<p>{post.directions}</p>
 				<Link to="/items" className="btn btn-primary"> Back to Post List</Link>
-
-				<button className="btn btn-danger"
-					onClick={this.onDeleteClick.bind(this)}>
-					Delete Post
-				</button>
 			</div>
 		);
 	}
@@ -70,4 +62,4 @@ function mapStateToProps(state) {
 	return { post: state.posts.post };
 }
 
-export default connect(mapStateToProps, { fetchPost, deletePost })(ListShow);
+export default connect(mapStateToProps, { fetchPosts: fetchPosts })(ListShow);
