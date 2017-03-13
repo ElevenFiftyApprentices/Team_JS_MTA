@@ -46,6 +46,7 @@ class ListShow extends Component {
 
 		return(
 			<div>
+				<input type="checkbox"></input>
 				<h3>{post.title}</h3>
 				<div id="space"></div>
 				<h6>Course: {post.category}</h6>
