@@ -1,6 +1,5 @@
 var Auth = require('./controllers/auth');
 var CookBook = require('./controllers/cookbookcontroller');
-var ListItem = require('./controllers/listitemscontroller');
 
 var passportService = require('./services/passport');
 var passport = require('passport');
@@ -29,6 +28,4 @@ module.exports = function(app){
 	app.get('/items', requireAuth, CookBook.fetchCookBooks);
 	app.get('/items/:id', requireAuth, CookBook.fetchCookBook);
 	app.delete('/items/:id', requireAuth, CookBook.deleteCookBook);
-	app.get('/listitems', requireAuth, ListItem.fetchListItems);
-	app.post('/newlistitem', requireAuth, ListItem.addListItem);
 }

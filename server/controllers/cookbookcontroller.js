@@ -4,24 +4,39 @@ exports.addMeal = function(req,res,next){
 	//for postman user
 	//var title = req.body.title;
 	var title = req.body.props.title;
-	var category = req.body.props.category;
-	var url = req.body.props.url;
-	var ingredients = req.body.props.ingredients;
-	var directions = req.body.props.directions;
+	var color = req.body.props.color;
 	var specificUser = req.user._id;
 
 	var cookBook = new Cookbook({
 		title: title,
-		category: category,
-		url: url,
-		ingredients: ingredients,
-		directions: directions,
+		color: color,
 		specificUser: specificUser
 	});
 
 	cookBook.save(function(err){
 		if(err) { return next(err); }
 		res.json(cookBook);
+	});
+}
+
+exports.addListItem = function(req, res, next) {
+	var contents = require.body.props.contents;
+	var shoppingListId = require.body.props.shoppingListId;
+	var priority = require.body.props.priority;
+	var isChecked = require.body.props.isChecked;
+	var notes = require.body.props.notes;
+
+	var item = new items({
+		contents: contents,
+		shoppingListId: shoppingListId,
+		priority: priority,
+		isChecked: isChecked,
+		notes: notes
+	});
+
+	item.push(function(err){
+		if(err) { return next(err); }
+		res.json(item)
 	});
 }
 
