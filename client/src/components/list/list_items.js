@@ -29,13 +29,17 @@ class ListItems extends Component {
 	renderItems(){
 		return this.state.posts.map((post) =>{
 			return(
-				<li className="list-group-item" key={post._id}>
+				<tr>
+				<td key={post._id}>
 					<span className="pull-xs-right"><strong>{post.title}</strong></span>
+				</td>
+				<td>
 					<Link to={"items/" + post._id}>
 						
 						<button className="pull-xs-right" bsStyle="primary">Show</button>
 					</Link>
-				</li>
+				</td>
+				</tr>
 			);
 		});
 	}
@@ -59,9 +63,14 @@ class ListItems extends Component {
 						</div>
 					</div>
 					<div id="space"></div>
-					<ul className="list-group">
+					<table className="table">
+					<tr>
+						<th>Name</th>
+						<th>Options</th>
+					</tr>
 						{this.renderItems()}
-					</ul>
+					</table>
+					
 				</div>
 			);
 		}
