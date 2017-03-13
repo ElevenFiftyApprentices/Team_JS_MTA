@@ -35,6 +35,7 @@ class ListItems extends Component {
 				</td>
 				<td>
 					<Link to={"items/" + post._id}>
+						
 						<button className="pull-xs-right" bsStyle="primary">Show</button>
 					</Link>
 				</td>
