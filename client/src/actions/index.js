@@ -39,6 +39,19 @@ export function createPost(props) {
 	}
 }
 
+export function createItem(props) {
+	return function (dispatch){
+		axios.post(`${ROOT_URL}/newlistitem`, { props }, config)
+		.then(request => {
+			dispatch({
+				type: CREATE_ITEM,
+				payload: request
+			});
+			browserHistory.push('/items');
+		});
+	}
+}
+
 export function fetchPosts() {
 	return function(dispatch){
 		axios.get(`${ROOT_URL}/items`, config)
