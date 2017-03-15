@@ -12,6 +12,20 @@
     </em>
   </small>
   </div>
+  <div class="row">
+  <div class="col-lg-6">
+    <form name="vm.form.shoppingListItemsForm" ng-submit="vm.addItem(vm.form.shoppingListItemsForm.$valid)" novalidate>
+    <input type="text" name="name" ng-model="vm.shoppinglist.item.name" placeholder="Item" required>
+    <input list="priorities" name="priority" ng-model="vm.shoppinglist.item.priority">
+      <datalist id="priorities">
+        <option>Gotta get this asap!</option>
+        <option>It can wait</option>
+        <option>ehh</option>
+      </datalist>
+    <input type="number" name="quantity" ng-model="vm.shoppinglist.item.quantity">
+    <button type="submit" class="btn btn-default">Add</button>
+    </form>
+  </div>
   <div style="color: {{vm.shoppinglist.color}}">
     <p><strong>test</strong></p>
     <table class="table">
