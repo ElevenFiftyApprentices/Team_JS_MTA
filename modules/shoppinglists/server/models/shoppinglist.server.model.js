@@ -29,6 +29,28 @@ var ShoppinglistSchema = new Schema({
     type: Date,
     default: Date.now
   },
+  item: {
+    name:{
+      type: String,
+      default: ''
+    },
+    priority:{
+      type: String,
+      default: ''
+    },
+    quantity:{
+      type: Number,
+      default: 1
+    },
+    isChecked:{
+      type: Boolean,
+      default: false
+    }
+  },
+  items: {
+    type: [],
+    default: []
+  },
   user: {
     type: Schema.ObjectId,
     ref: 'User'

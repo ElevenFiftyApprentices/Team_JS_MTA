@@ -11,11 +11,14 @@
   function ShoppinglistsController ($scope, $state, $window, Authentication, shoppinglist) {
     var vm = this;
 
+    vm.shoppingListItems = [];
+
     vm.authentication = Authentication;
     vm.shoppinglist = shoppinglist;
     vm.error = null;
     vm.form = {};
     vm.remove = remove;
+    vm.addItem = addItem;
     vm.save = save;
     // vm.listColor = '#000000';
     // Remove existing Shoppinglist
@@ -23,6 +26,13 @@
       if ($window.confirm('Are you sure you want to delete?')) {
         vm.shoppinglist.$remove($state.go('shoppinglists.list'));
       }
+    }
+
+    function addItem(isValid){
+      console.log(vm.shoppinglist.item);
+      vm.shoppinglist.items.push(vm.shoppinglist.item);
+      console.log(vm.shoppinglist);
+      vm.shoppinglist.item = '';
     }
 
     // Save Shoppinglist

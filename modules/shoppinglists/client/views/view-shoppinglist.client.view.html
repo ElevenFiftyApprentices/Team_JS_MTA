@@ -2,7 +2,7 @@
   <div class="page-header">
     <h1 ng-bind="vm.shoppinglist.name"></h1>
     <small>
-    <em class="text-muted">
+    <em class="text-muted" style="color: black">
       Posted on
       <span ng-bind="vm.shoppinglist.created | date:'mediumDate'"></span>
       by
@@ -14,6 +14,26 @@
   </div>
   <div style="color: {{vm.shoppinglist.color}}">
     <p><strong>test</strong></p>
+    <table class="table">
+    <thead>
+      <tr>
+        <th class="glyphicon glyphicon-ok"></th>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Priority</th>
+        <th>Delete Item</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in vm.shoppinglist.items">
+        <td><input type="checkbox" ng-model="shoppinglist.item.isChecked"></td>
+        <td>{{item.name}}</td>
+        <td>{{item.quantity}}</td>
+        <td>{{item.priority}}</td>
+        <td><button class="btn btn-danger glyphicon glyphicon-trash"></button></td>
+      </tr>
+    </tbody>
+    </table>
   </div>
   <div class="pull-right"
        ng-show="vm.shoppinglist.isCurrentUserOwner">
