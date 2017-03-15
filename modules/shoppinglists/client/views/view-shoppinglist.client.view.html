@@ -14,7 +14,7 @@
   </div>
   <div class="row">
   <div class="col-lg-6">
-    <form name="vm.form.shoppingListItemsForm" ng-submit="vm.addItem(vm.form.shoppingListItemsForm.$valid)" novalidate>
+    <!-- <form name="vm.form.shoppingListItemsForm" ng-submit="vm.addItem(vm.form.shoppingListItemsForm.$valid)" novalidate>
     <input type="text" name="name" ng-model="vm.shoppinglist.item.name" placeholder="Item" required>
     <input list="priorities" name="priority" ng-model="vm.shoppinglist.item.priority">
       <datalist id="priorities">
@@ -25,13 +25,14 @@
     <input type="number" name="quantity" ng-model="vm.shoppinglist.item.quantity">
     <input type="checkbox" name="isChecked" ng-model="vm.shoppinglist.item.isChecked">
     <button type="submit" class="btn btn-default">Add</button>
-    </form>
+    </form> -->
   </div>
-  <div style="color: {{vm.shoppinglist.color}}">
-    <p><strong>test</strong></p>
-    <table class="table">
+  <div style="color: {{vm.shoppinglist.color}} " >
+    
+    <table class="table" style="background: rgba(0,0,0,0.3); border-radius: 10px;">
     <thead>
       <tr>
+
         <th class="glyphicon glyphicon-ok"></th>
         <th>Name</th>
         <th>Quantity</th>
@@ -50,10 +51,56 @@
         <td>{{item.name}}</td>
         <td>{{item.quantity}}</td>
         <td>{{item.priority}}</td>
-        <td><button class="btn btn-danger glyphicon glyphicon-trash"></button></td>
+        <td>
+          <a class="btn btn-danger" ng-click="vm.removeItem()">
+            <i class="glyphicon glyphicon-trash"></i>
+          </a>
+        </td>
       </tr>
     </tbody>
     </table>
+
+
+    <div class="col-md-12" style="background: rgba(0,0,0,0.3); border-radius: 10px;">
+      <form name="vm.form.shoppingListItemsForm" ng-submit="vm.addItem(vm.form.shoppingListItemsForm.$valid)" class="form-horizontal" novalidate >
+      <br />
+      <div class="form-group">
+        <div class="col-md-6">
+
+          <input type="text" name="name" ng-model="vm.shoppinglist.item.name" placeholder="Item" class="form-control" required>
+            <br />
+        </div>
+        <div class="col-md-12">
+           <div class="form-group col-md-3" style="margin-right:30px">
+              <input list="priorities" name="priority" ng-model="vm.shoppinglist.item.priority" placeholder="Priority" class="form-control">
+              <datalist id="priorities">
+                <option>Gotta get this asap!</option>
+                <option>It can wait</option>
+                <option>ehh</option>
+              </datalist>
+            </div>
+            <div class="form-group col-md-3 col-md-offset-1">
+              
+              <input type="number" name="quantity" placeholder="Quantity" class="form-control" ng-model="vm.shoppinglist.item.quantity">
+            </div>
+        
+        <div class="form-group col-md-12">
+         <button type="submit" class="btn btn-default">Add</button>
+        </div>
+        </div>
+      </div>
+      </form>
+    </div>
+    
+
+
+
+ 
+
+
+
+
+
   </div>
   <div class="pull-right"
        ng-show="vm.shoppinglist.isCurrentUserOwner">
