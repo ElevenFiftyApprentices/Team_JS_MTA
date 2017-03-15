@@ -1,0 +1,22 @@
+body {
+  font-family: 'Shadows Into Light Two', cursive;
+  background-image: url("img/black-linen.png");
+}
+
+#home-header {
+  font-family: 'Raleway', sans-serif;
+  font-size: 150px;
+  color: #FFF;
+}
+
+.list-group > a > h4 {
+	font-size: 35px;
+}
+
+label {
+	font-size: 20px;
+}
+
+.form-control {
+	font-size: 20px;
+}
