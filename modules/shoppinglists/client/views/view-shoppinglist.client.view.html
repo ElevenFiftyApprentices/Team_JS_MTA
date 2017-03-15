@@ -17,12 +17,18 @@
     <table class="table" style="background: rgba(0,0,0,0.3); border-radius: 10px;">
     <thead>
       <tr>
-        <th><strong>Name</strong></th>
+
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Priority</th>
+
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat="item in vm.shoppinglist.items">
-        <td>{{item}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.quantity}}</td>
+        <td>{{item.priority}}</td>
       </tr>
     </tbody>
     </table>
