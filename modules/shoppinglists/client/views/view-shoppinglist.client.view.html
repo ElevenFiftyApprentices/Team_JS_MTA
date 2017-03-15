@@ -14,6 +14,18 @@
   </div>
   <div style="color: {{vm.shoppinglist.color}}">
     <p><strong>test</strong></p>
+    <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in vm.shoppinglist.items">
+        <td>{{item}}</td>
+      </tr>
+    </tbody>
+    </table>
   </div>
   <div class="pull-right"
        ng-show="vm.shoppinglist.isCurrentUserOwner">
