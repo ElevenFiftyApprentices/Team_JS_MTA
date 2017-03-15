@@ -30,8 +30,22 @@ var ShoppinglistSchema = new Schema({
     default: Date.now
   },
   item: {
-    type: String,
-    default: ''
+    name:{
+      type: String,
+      default: ''
+    },
+    priority:{
+      type: String,
+      default: ''
+    },
+    quantity:{
+      type: Number,
+      default: 1
+    },
+    isChecked:{
+      type: Boolean,
+      default: false
+    }
   },
   items: {
     type: [],
