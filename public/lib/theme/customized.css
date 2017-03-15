@@ -1,0 +1,26 @@
+body {
+font-family: 'Raleway', sans-serif;
+background-image: url("img/glenn-carstens-peters-190592.jpg");
+background-repeat: no-repeat;
+background-position: right top;
+background-attachment: fixed;
+background-size: 100%;
+}
+
+#home-header {
+  font-family: 'Raleway', sans-serif;
+  font-size: 150px;
+  color: black;
+}
+
+.list-group > a > h4 {
+	font-size: 35px;
+}
+
+label {
+	font-size: 20px;
+}
+
+.form-control {
+	font-size: 20px;
+}
