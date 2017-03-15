@@ -18,17 +18,24 @@
     <thead>
       <tr>
 
+        <th class="glyphicon glyphicon-ok"></th>
         <th>Name</th>
         <th>Quantity</th>
         <th>Priority</th>
-
+        <th>Delete Item</th>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat="item in vm.shoppinglist.items">
+        <td><input type="checkbox" ng-model="shoppinglist.item.isChecked"></td>
         <td>{{item.name}}</td>
         <td>{{item.quantity}}</td>
         <td>{{item.priority}}</td>
+        <td>
+          <a class="btn btn-danger" ng-click="vm.removeItem()">
+            <i class="glyphicon glyphicon-trash"></i>
+          </a>
+        </td>
       </tr>
     </tbody>
     </table>
