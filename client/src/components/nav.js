@@ -29,7 +29,7 @@ class NavBarHeader extends Component {
 			<Navbar>
 		    <Navbar.Header>
 		      <Navbar.Brand>
-		        <a href="#" id="nav-brand">Shopping List</a>
+		        <a href="#">Shopping List</a>
 		      </Navbar.Brand>
 		    </Navbar.Header>
 		    <Nav>
