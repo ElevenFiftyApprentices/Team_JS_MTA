@@ -23,6 +23,7 @@
         <option>ehh</option>
       </datalist>
     <input type="number" name="quantity" ng-model="vm.shoppinglist.item.quantity">
+    <input type="checkbox" name="isChecked" ng-model="vm.shoppinglist.item.isChecked">
     <button type="submit" class="btn btn-default">Add</button>
     </form> -->
   </div>
@@ -41,7 +42,12 @@
     </thead>
     <tbody>
       <tr ng-repeat="item in vm.shoppinglist.items">
-        <td><input type="checkbox" ng-model="shoppinglist.item.isChecked"></td>
+        <td ng-switch="item.isChecked">
+          <input ng-switch-when="true" type="checkbox" checked ng-click="submit">
+          <input ng-switch-default type="checkbox" ng-click="submit">
+        </td>
+
+        <!-- <td><input type="checkbox" ng-model="shoppinglist.item.isChecked"></td> -->
         <td>{{item.name}}</td>
         <td>{{item.quantity}}</td>
         <td>{{item.priority}}</td>
