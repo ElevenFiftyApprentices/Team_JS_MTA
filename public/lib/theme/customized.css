@@ -5,7 +5,7 @@ body {
 	background-position: right top;
 	background-attachment: fixed;
 	background-size: 100%;
-	
+
 }
 
 #home-header {
@@ -16,6 +16,11 @@ body {
 
 .list-group > a > h4 {
 	font-size: 35px;
+
+}
+
+.list-group {
+	color: white;
 }
 
 label {

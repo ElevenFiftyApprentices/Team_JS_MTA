@@ -3,7 +3,7 @@
     <h1>Shopping Lists <a ui-sref="shoppinglists.create" class="btn btn-md btn-primary pull-right">Add New List</a></h1>
 
   </div>
-  <div class="list-group">
+  <div class="list-group" >
     <a ng-repeat="shoppinglist in vm.shoppinglists"
        ui-sref="shoppinglists.view({ shoppinglistId: shoppinglist._id })"
        class="list-group-item">
