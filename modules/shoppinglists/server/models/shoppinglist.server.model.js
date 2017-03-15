@@ -29,6 +29,14 @@ var ShoppinglistSchema = new Schema({
     type: Date,
     default: Date.now
   },
+  item: {
+    type: String,
+    default: ''
+  },
+  items: {
+    type: [],
+    default: []
+  },
   user: {
     type: Schema.ObjectId,
     ref: 'User'
