@@ -33,6 +33,23 @@
       vm.shoppinglist.items.push(vm.shoppinglist.item);
       console.log(vm.shoppinglist);
       vm.shoppinglist.item = '';
+      if(!isValid){
+        $scope.$broadcast('show-errors-check-validity', 'vm.form.shoppingListItemsForm');
+        return false;
+      }
+
+      if(vm.shoppinglist._id){
+        vm.shoppinglist.$update(successCallback, errorCallback);
+      }
+      function successCallback(res) {
+        $state.go('shoppinglists.view', {
+          shoppinglistId: res._id
+        });
+      }
+
+      function errorCallback(res) {
+        vm.error = res.data.message;
+      }
     }
 
     // Save Shoppinglist
