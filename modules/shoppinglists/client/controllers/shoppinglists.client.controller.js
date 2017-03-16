@@ -23,6 +23,10 @@
     vm.deleteRow = deleteRow;
     vm.checkBox = checkBox;
     vm.editRow = editRow;
+    // vm.hoverIn = hoverIn;
+    // vm.hoverOut = hoverOut;
+    // vm.showOptionDetails = showOptionDetails;
+    // vm.closeOptionDetails = closeOptionDetails;
     // vm.listColor = '#000000';
     // Remove existing Shoppinglist
     function remove() {
@@ -30,6 +34,23 @@
         vm.shoppinglist.$remove($state.go('shoppinglists.list'));
       }
     }
+
+   // function showOptionDetails(option) {
+   //          $log.info($scope.option);
+   //          $scope.optionModal = $modal.open({
+   //              template: '<div class="modal-header" ng-mouseleave="close()"><h3 class="modal-title">Option</h3></div><div class="modal-body">{{option.longDescription}}</div><div class="modal-footer" ng-click="close()">Close</div>',
+   //              controller: 'modalCtrl',
+   //              resolve: {
+   //                  option: function() {
+   //                    return $scope.option;
+   //                  }
+   //              }
+   //          });
+   //     }
+
+   //  function closeOptionDetails() {
+   //      $scope.optionModal.close();
+   //  }
 
     function deleteRow($index){
       if ($window.confirm('Are you sure you want to delete?')) {
@@ -78,6 +99,7 @@
 
     function addItem(isValid){
       console.log(vm.shoppinglist.item);
+      vm.shoppingListItems.push(vm.shoppinglist.item);
       vm.shoppinglist.items.push(vm.shoppinglist.item);
       console.log(vm.shoppinglist);
       vm.shoppinglist.item = '';
