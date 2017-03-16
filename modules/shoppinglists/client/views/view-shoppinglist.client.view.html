@@ -1,6 +1,18 @@
 <section>
   <div class="page-header">
+    <div class="row">
     <h1 ng-bind="vm.shoppinglist.name"></h1>
+    <div class="pull-right"
+       ng-show="vm.shoppinglist.isCurrentUserOwner">
+    <a class="btn btn-primary"
+       ui-sref="shoppinglists.edit({ shoppinglistId: vm.shoppinglist._id })">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-danger" ng-click="vm.remove()">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  </div>
     <small>
     <em class="text-muted" style="color: black">
       Posted on
@@ -12,21 +24,6 @@
     </em>
   </small>
   </div>
-  <div class="row">
-  <div class="col-lg-6">
-    <!-- <form name="vm.form.shoppingListItemsForm" ng-submit="vm.addItem(vm.form.shoppingListItemsForm.$valid)" novalidate>
-    <input type="text" name="name" ng-model="vm.shoppinglist.item.name" placeholder="Item" required>
-    <input list="priorities" name="priority" ng-model="vm.shoppinglist.item.priority">
-      <datalist id="priorities">
-        <option>Gotta get this asap!</option>
-        <option>It can wait</option>
-        <option>ehh</option>
-      </datalist>
-    <input type="number" name="quantity" ng-model="vm.shoppinglist.item.quantity">
-    <input type="checkbox" name="isChecked" ng-model="vm.shoppinglist.item.isChecked">
-    <button type="submit" class="btn btn-default">Add</button>
-    </form> -->
-  </div>
   <div style="color: {{vm.shoppinglist.color}} " >
     
     <table class="table" style="background: rgba(0,0,0,0.3); border-radius: 10px;">
@@ -37,22 +34,34 @@
         <th>Name</th>
         <th>Quantity</th>
         <th>Priority</th>
-        <th>Delete Item</th>
+        <th>Options</th>
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="item in vm.shoppinglist.items">
+      <tr ng-repeat="item in vm.shoppinglist.items track by $index">
         <td ng-switch="item.isChecked">
-          <input ng-switch-when="true" type="checkbox" checked ng-click="submit">
-          <input ng-switch-default type="checkbox" ng-click="submit">
+          <input ng-switch-when="true" type="checkbox" checked ng-model="item.isChecked" ng-change="vm.checkBox($index)">
+          <input ng-switch-default type="checkbox" ng-model="item.isChecked" ng-change="vm.checkBox($index)">
         </td>
 
         <!-- <td><input type="checkbox" ng-model="shoppinglist.item.isChecked"></td> -->
-        <td>{{item.name}}</td>
-        <td>{{item.quantity}}</td>
-        <td>{{item.priority}}</td>
+        <td ng-switch="item.isChecked">
+          <h4 ng-switch-when="true"><del>{{item.name}}</del></h4>
+          <h4 ng-switch-default>{{item.name}}</h4>
+        </td>
+        <td ng-switch="item.isChecked">
+          <h4 ng-switch-when="true"><del>{{item.priority}}</del></h4>
+          <h4 ng-switch-default>{{item.priority}}</h4>
+        </td>
+        <td ng-switch="item.isChecked">
+          <h4 ng-switch-when="true"><del>{{item.quantity}}</del></h4>
+          <h4 ng-switch-default>{{item.quantity}}</h4>
+        </td>
         <td>
-          <a class="btn btn-danger" ng-click="vm.removeItem()">
+          <a class="btn btn-primary" ng-click="vm.editRow($index)">
+            <i class="glyphicon glyphicon-edit"></i>
+          </a>
+          <a class="btn btn-danger" ng-click="vm.deleteRow($index)">
             <i class="glyphicon glyphicon-trash"></i>
           </a>
         </td>
@@ -102,16 +111,7 @@
 
 
   </div>
-  <div class="pull-right"
-       ng-show="vm.shoppinglist.isCurrentUserOwner">
-    <a class="btn btn-primary"
-       ui-sref="shoppinglists.edit({ shoppinglistId: vm.shoppinglist._id })">
-      <i class="glyphicon glyphicon-edit"></i>
-    </a>
-    <a class="btn btn-danger" ng-click="vm.remove()">
-      <i class="glyphicon glyphicon-trash"></i>
-    </a>
-  </div>
+  
   
   <p class="lead" ng-bind="vm.shoppinglist.content"></p>
 </section>
