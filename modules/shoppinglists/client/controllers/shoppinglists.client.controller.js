@@ -23,8 +23,7 @@
     vm.deleteRow = deleteRow;
     vm.checkBox = checkBox;
     vm.editRow = editRow;
-    vm.hoverIn = hoverIn;
-    vm.hoverOut = hoverOut;
+
     // vm.listColor = '#000000';
     // Remove existing Shoppinglist
     function remove() {
@@ -33,13 +32,7 @@
       }
     }
 
-    function hoverIn () {
-      this.hoverEdit = true;
-    }
 
-    function hoverOut () {
-      this.hoverEdit = false;
-    }
 
     function deleteRow($index){
       if ($window.confirm('Are you sure you want to delete?')) {
@@ -88,6 +81,7 @@
 
     function addItem(isValid){
       console.log(vm.shoppinglist.item);
+      vm.shoppingListItems.push(vm.shoppinglist.item);
       vm.shoppinglist.items.push(vm.shoppinglist.item);
       console.log(vm.shoppinglist);
       vm.shoppinglist.item = '';
