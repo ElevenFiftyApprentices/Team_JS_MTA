@@ -23,10 +23,7 @@
     vm.deleteRow = deleteRow;
     vm.checkBox = checkBox;
     vm.editRow = editRow;
-    // vm.hoverIn = hoverIn;
-    // vm.hoverOut = hoverOut;
-    // vm.showOptionDetails = showOptionDetails;
-    // vm.closeOptionDetails = closeOptionDetails;
+
     // vm.listColor = '#000000';
     // Remove existing Shoppinglist
     function remove() {
@@ -35,22 +32,7 @@
       }
     }
 
-   // function showOptionDetails(option) {
-   //          $log.info($scope.option);
-   //          $scope.optionModal = $modal.open({
-   //              template: '<div class="modal-header" ng-mouseleave="close()"><h3 class="modal-title">Option</h3></div><div class="modal-body">{{option.longDescription}}</div><div class="modal-footer" ng-click="close()">Close</div>',
-   //              controller: 'modalCtrl',
-   //              resolve: {
-   //                  option: function() {
-   //                    return $scope.option;
-   //                  }
-   //              }
-   //          });
-   //     }
 
-   //  function closeOptionDetails() {
-   //      $scope.optionModal.close();
-   //  }
 
     function deleteRow($index){
       if ($window.confirm('Are you sure you want to delete?')) {

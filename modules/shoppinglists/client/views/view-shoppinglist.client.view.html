@@ -28,7 +28,7 @@
     
     <table class="table" style="background: rgba(0,0,0,0.3); border-radius: 10px;">
     <thead>
-      <tr>
+      <tr ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
 
         <th class="glyphicon glyphicon-ok"></th>
         <th>Name</th>
@@ -46,16 +46,16 @@
 
         <!-- <td><input type="checkbox" ng-model="shoppinglist.item.isChecked"></td> -->
         <td ng-switch="item.isChecked">
-          <h4 ng-switch-when="true"><del>{{item.name}}</del></h4>
-          <h4 ng-switch-default>{{item.name}}</h4>
+          <h4 ng-switch-when="true"><del>{{item.name}}</del><a ng-show="item.notes!==''" href="#" data-toggle="tooltip" title="{{item.notes}}"><i class="glyphicon glyphicon-info-sign"></i></a></h4>
+          <h4 ng-switch-default>{{item.name}}<a ng-show="item.notes!==''" href="#" data-toggle="tooltip" title="{{item.notes}}"><i class="glyphicon glyphicon-info-sign"></i></a></h4>
         </td>
         <td ng-switch="item.isChecked">
           <h4 ng-switch-when="true"><del>{{item.priority}}</del></h4>
-          <h4 ng-switch-default>{{item.priority}}</h4>
+          <h4 ng-switch-default>{{item.quantity}}</h4>
         </td>
         <td ng-switch="item.isChecked">
           <h4 ng-switch-when="true"><del>{{item.quantity}}</del></h4>
-          <h4 ng-switch-default>{{item.quantity}}</h4>
+          <h4 ng-switch-default>{{item.priority}}</h4>
         </td>
         <td>
           <a class="btn btn-primary" ng-click="vm.editRow($index)">
@@ -65,15 +65,9 @@
             <i class="glyphicon glyphicon-trash"></i>
           </a>
         </td>
-
-       <!--  <div ng-show="hoverEdit" class="animate-show">
-                <div><h2>Notes:</h2>{{item.notes}}</div>
-        </div> -->
-        
       </tr>
     </tbody>
     </table>
-
 
     <div class="col-md-12" style="background: rgba(0,0,0,0.3); border-radius: 10px;">
       <form name="vm.form.shoppingListItemsForm" ng-submit="vm.addItem(vm.form.shoppingListItemsForm.$valid)" class="form-horizontal" novalidate >
@@ -98,26 +92,23 @@
               <input type="number" name="quantity" placeholder="Quantity" class="form-control" ng-model="vm.shoppinglist.item.quantity">
             </div>
         
+        <input type="text" placeholder="Add Notes" class="form-control" ng-model="vm.shoppinglist.item.notes"></input>
+        <br>
         <div class="form-group col-md-12">
-        <input type="text" name="notes" ng-model="vm.shoppinglist.item.notes" rows="6">
          <button type="submit" class="btn btn-default">Add</button>
         </div>
         </div>
       </div>
       </form>
     </div>
-    
-
-
-
- 
-
-
-
-
 
   </div>
   
   
   <p class="lead" ng-bind="vm.shoppinglist.content"></p>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip(); 
+    });
+  </script>
 </section>
