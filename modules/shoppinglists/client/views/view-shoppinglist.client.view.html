@@ -28,17 +28,18 @@
     
     <table class="table" style="background: rgba(0,0,0,0.3); border-radius: 10px;">
     <thead>
-      <tr>
+      <tr ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
 
         <th class="glyphicon glyphicon-ok"></th>
         <th>Name</th>
         <th>Quantity</th>
         <th>Priority</th>
+        <th>Notes</th>
         <th>Options</th>
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="item in vm.shoppinglist.items track by $index">
+      <tr ng-repeat="item in vm.shoppinglist.items track by $index" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
         <td ng-switch="item.isChecked">
           <input ng-switch-when="true" type="checkbox" checked ng-model="item.isChecked" ng-change="vm.checkBox($index)">
           <input ng-switch-default type="checkbox" ng-model="item.isChecked" ng-change="vm.checkBox($index)">
@@ -57,6 +58,7 @@
           <h4 ng-switch-when="true"><del>{{item.quantity}}</del></h4>
           <h4 ng-switch-default>{{item.quantity}}</h4>
         </td>
+        <td>{{item.notes}}</td>
         <td>
           <a class="btn btn-primary" ng-click="vm.editRow($index)">
             <i class="glyphicon glyphicon-edit"></i>
@@ -65,10 +67,10 @@
             <i class="glyphicon glyphicon-trash"></i>
           </a>
         </td>
+        <br>
       </tr>
     </tbody>
     </table>
-
 
     <div class="col-md-12" style="background: rgba(0,0,0,0.3); border-radius: 10px;">
       <form name="vm.form.shoppingListItemsForm" ng-submit="vm.addItem(vm.form.shoppingListItemsForm.$valid)" class="form-horizontal" novalidate >
@@ -93,6 +95,8 @@
               <input type="number" name="quantity" placeholder="Quantity" class="form-control" ng-model="vm.shoppinglist.item.quantity">
             </div>
         
+        <input type="text" placeholder="Add Notes" class="form-control" ng-model="vm.shoppinglist.item.notes"></input>
+        <br>
         <div class="form-group col-md-12">
          <button type="submit" class="btn btn-default">Add</button>
         </div>

@@ -23,12 +23,22 @@
     vm.deleteRow = deleteRow;
     vm.checkBox = checkBox;
     vm.editRow = editRow;
+    vm.hoverIn = hoverIn;
+    vm.hoverOut = hoverOut;
     // vm.listColor = '#000000';
     // Remove existing Shoppinglist
     function remove() {
       if ($window.confirm('Are you sure you want to delete?')) {
         vm.shoppinglist.$remove($state.go('shoppinglists.list'));
       }
+    }
+
+    function hoverIn () {
+      this.hoverEdit = true;
+    }
+
+    function hoverOut () {
+      this.hoverEdit = false;
     }
 
     function deleteRow($index){

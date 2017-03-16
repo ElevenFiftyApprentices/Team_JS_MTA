@@ -45,6 +45,10 @@ var ShoppinglistSchema = new Schema({
     isChecked:{
       type: Boolean,
       default: false
+    },
+    notes:{
+      type: String,
+      default: ''
     }
   },
   items: {
