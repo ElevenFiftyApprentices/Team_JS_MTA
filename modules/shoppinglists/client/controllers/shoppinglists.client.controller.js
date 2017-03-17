@@ -23,10 +23,12 @@
     vm.deleteRow = deleteRow;
     vm.checkBox = checkBox;
     vm.editRow = editRow;
+
     vm.apple = null;
     vm.cancelUpdate = cancelUpdate;
     vm.updateEdit = updateEdit;
     vm.banana = 0;
+
 
 
     // vm.listColor = '#000000';
@@ -36,6 +38,7 @@
         vm.shoppinglist.$remove($state.go('shoppinglists.list'));
       }
     }
+
 
     function cancelUpdate() {
       vm.apple = null;
