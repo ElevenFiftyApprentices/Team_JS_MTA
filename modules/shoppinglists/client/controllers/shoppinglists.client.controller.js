@@ -23,6 +23,10 @@
     vm.deleteRow = deleteRow;
     vm.checkBox = checkBox;
     vm.editRow = editRow;
+    vm.apple = null;
+    vm.cancelUpdate = cancelUpdate;
+    vm.updateEdit = updateEdit;
+
 
     // vm.listColor = '#000000';
     // Remove existing Shoppinglist
@@ -32,7 +36,31 @@
       }
     }
 
+    function cancelUpdate() {
+      vm.apple = null;
+      vm.shoppinglist.item = '';
+    }
 
+    function updateEdit(){
+      vm.shoppinglist.items[vm.apple] = vm.shoppinglist.item;
+      console.log(vm.shoppinglist);
+      
+      
+      if(vm.shoppinglist._id){
+        vm.shoppinglist.$update(successCallback, errorCallback);
+      }
+      function successCallback(res) {
+        $state.go('shoppinglists.view', {
+          shoppinglistId: res._id
+        });
+      }
+
+      function errorCallback(res) {
+        vm.error = res.data.message;
+      }
+      vm.apple = null;
+      vm.shoppinglist.item = '';
+    }
 
     function deleteRow($index){
       if ($window.confirm('Are you sure you want to delete?')) {
@@ -55,7 +83,9 @@
     }
 
     function editRow($index){
-      
+      vm.apple = $index;
+      vm.shoppinglist.item = vm.shoppinglist.items[$index];
+
     }
 
     function checkBox($index){
