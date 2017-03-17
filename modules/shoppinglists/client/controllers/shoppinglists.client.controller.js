@@ -26,6 +26,7 @@
     vm.apple = null;
     vm.cancelUpdate = cancelUpdate;
     vm.updateEdit = updateEdit;
+    vm.banana = 0;
 
 
     // vm.listColor = '#000000';
@@ -63,9 +64,7 @@
     }
 
     function deleteRow($index){
-      if ($window.confirm('Are you sure you want to delete?')) {
-        vm.shoppinglist.items.splice($index, 1);
-      }
+      vm.shoppinglist.items.splice($index, 1);
       
       if(vm.shoppinglist._id){
         vm.shoppinglist.$update(successCallback, errorCallback);
