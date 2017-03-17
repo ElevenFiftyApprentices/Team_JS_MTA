@@ -34,12 +34,11 @@
         <th>Name</th>
         <th>Quantity</th>
         <th>Priority</th>
-        <th>Notes</th>
         <th>Options</th>
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="item in vm.shoppinglist.items track by $index" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
+      <tr ng-repeat="item in vm.shoppinglist.items track by $index" >
         <td ng-switch="item.isChecked">
           <input ng-switch-when="true" type="checkbox" checked ng-model="item.isChecked" ng-change="vm.checkBox($index)">
           <input ng-switch-default type="checkbox" ng-model="item.isChecked" ng-change="vm.checkBox($index)">
@@ -47,18 +46,17 @@
 
         <!-- <td><input type="checkbox" ng-model="shoppinglist.item.isChecked"></td> -->
         <td ng-switch="item.isChecked">
-          <h4 ng-switch-when="true"><del>{{item.name}}</del></h4>
-          <h4 ng-switch-default>{{item.name}}</h4>
+          <h4 ng-switch-when="true"><del>{{item.name}}</del><a ng-show="item.notes!==''" href="#" data-toggle="tooltip" title="{{item.notes}}"><i class="glyphicon glyphicon-info-sign"></i></a></h4>
+          <h4 ng-switch-default>{{item.name}}<a ng-show="item.notes!==''" href="#" data-toggle="tooltip" title="{{item.notes}}"><i class="glyphicon glyphicon-info-sign"></i></a></h4>
         </td>
         <td ng-switch="item.isChecked">
           <h4 ng-switch-when="true"><del>{{item.priority}}</del></h4>
-          <h4 ng-switch-default>{{item.priority}}</h4>
+          <h4 ng-switch-default>{{item.quantity}}</h4>
         </td>
         <td ng-switch="item.isChecked">
           <h4 ng-switch-when="true"><del>{{item.quantity}}</del></h4>
-          <h4 ng-switch-default>{{item.quantity}}</h4>
+          <h4 ng-switch-default>{{item.priority}}</h4>
         </td>
-        <td>{{item.notes}}</td>
         <td>
           <a class="btn btn-primary" ng-click="vm.editRow($index)">
             <i class="glyphicon glyphicon-edit"></i>
@@ -67,17 +65,17 @@
             <i class="glyphicon glyphicon-trash"></i>
           </a>
         </td>
-        <br>
       </tr>
     </tbody>
     </table>
 
-    <div class="col-md-12" style="background: rgba(0,0,0,0.3); border-radius: 10px;">
+    <div class="col-md-12" style="background: rgba(0,0,0,0.3); border-radius: 10px;" ng-switch="vm.apple">
+    <div ng-switch-when="null">
+    <h3>New Item</h3>
       <form name="vm.form.shoppingListItemsForm" ng-submit="vm.addItem(vm.form.shoppingListItemsForm.$valid)" class="form-horizontal" novalidate >
       <br />
       <div class="form-group">
         <div class="col-md-6">
-
           <input type="text" name="name" ng-model="vm.shoppinglist.item.name" placeholder="Item" class="form-control" required>
             <br />
         </div>
@@ -85,9 +83,9 @@
            <div class="form-group col-md-3" style="margin-right:30px">
               <input list="priorities" name="priority" ng-model="vm.shoppinglist.item.priority" placeholder="Priority" class="form-control">
               <datalist id="priorities">
-                <option>Gotta get this asap!</option>
-                <option>It can wait</option>
-                <option>ehh</option>
+                <option>High</option>
+                <option>Medium</option>
+                <option>Low</option>
               </datalist>
             </div>
             <div class="form-group col-md-3 col-md-offset-1">
@@ -95,27 +93,56 @@
               <input type="number" name="quantity" placeholder="Quantity" class="form-control" ng-model="vm.shoppinglist.item.quantity">
             </div>
         
-        <input type="text" placeholder="Add Notes" class="form-control" ng-model="vm.shoppinglist.item.notes"></input>
-        <br>
-        <div class="form-group col-md-12">
-         <button type="submit" class="btn btn-default">Add</button>
-        </div>
+            <input type="text" placeholder="Add Notes" class="form-control" ng-model="vm.shoppinglist.item.notes">
+            <br>
+            <div class="form-group col-md-12">
+              <button type="submit" class="btn btn-primary">Create</button>
+            </div>
         </div>
       </div>
       </form>
+      </div>
+      <div ng-switch-default>
+        <h3>Edit Item</h3>
+        <form name="vm.form.shoppingListItemsUpdateForm" class="form-horizontal" >
+        <br />
+        <div class="form-group">
+          <div class="col-md-6">
+            <input type="text" name="name" ng-model="vm.shoppinglist.item.name" class="form-control" required>
+            <br />
+          </div>
+        <div class="col-md-12">
+            <div class="form-group col-md-3" style="margin-right:30px">
+              <input list="priorities" name="priority" ng-model="vm.shoppinglist.item.priority" class="form-control">
+              <datalist id="priorities">
+                <option>High</option>
+                <option>Medium</option>
+                <option>Low</option>
+              </datalist>
+            </div>
+            <div class="form-group col-md-3 col-md-offset-1">
+              <input type="number" name="quantity" class="form-control" ng-model="vm.shoppinglist.item.quantity">
+            </div>
+        
+            <input type="text" class="form-control" ng-model="vm.shoppinglist.item.notes">
+            <br>
+            <div class="form-group col-md-12">
+              <button  class="btn btn-primary" ng-click="vm.updateEdit()" >Update</button>
+              <button class="btn btn-danger" ng-click="vm.cancelUpdate()">Cancel</button>
+            </div>
+        </div>
+      </div>
+      </form>
+      </div>
     </div>
-    
-
-
-
- 
-
-
-
-
 
   </div>
   
   
   <p class="lead" ng-bind="vm.shoppinglist.content"></p>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip(); 
+    });
+  </script>
 </section>
